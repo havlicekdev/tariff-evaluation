@@ -55,3 +55,16 @@ if __name__ == '__main__':
 
     # Print after evaluation
     print(tariff.getStatus())
+
+    # Tariff evaluation
+    evaluation = Evaluation(tariff)
+    evaluation.evaluate(15000000)
+
+    # Print after evaluation
+    print(tariff.getStatus())
+
+    # Withdrawal evaluation
+    evaluation.withdrawal_evaluate(2, 1000000, 15000000)
+
+    # Print after evaluation
+    print(tariff.getStatus())
