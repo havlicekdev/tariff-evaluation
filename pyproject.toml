@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "zhodnoceni-portfolia"
+version = "0.1.0"
+description = ""
+authors = ["Petr Havlíček <havlicekdev@seznam.cz>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+self = "^2020.12.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
