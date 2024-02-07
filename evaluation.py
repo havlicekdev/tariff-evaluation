@@ -47,6 +47,7 @@ class Evaluation:
         for investor in self.tariff_investors:
             if investor.getId() == self.investor_id:
                 investor.setAsset(round(investor.getAsset() + investor_deposit))
+                investor.incDeposit(investor_deposit)
 
         # Percentage conversion for deposit investor
         self.deposit_id_share = 0
@@ -92,6 +93,7 @@ class Evaluation:
         for investor in self.tariff_investors:
             if investor.getId() == self.investor_id:
                 investor.setAsset(round(investor.getAsset() - investor_withdrawal))
+                investor.decDeposit(investor_withdrawal)
 
         # Percentage conversion for deposit investor
         self.deposit_id_share = 0

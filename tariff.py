@@ -40,9 +40,25 @@ class Tariff:
         return len(self.investors)
 
     def getStatus(self):
-        self.status = "\n\nTariff status\n\nId\tAsset\tShare(%)\n"
+        self.status = ("\n\nTariff status"
+                       "\n\nId"
+                       "\tAsset"
+                       "\tShare(%)"
+                       "\t\t\tDeposit"
+                       "\tValorization"
+                       "\tValorization(%)"
+                       "\n"
+                       "")
         for investor in self.getListOfInvestors():
-            self.status += str(investor.id) + "\t" + str(investor.asset) + "\t" + str(investor.share) + "\n"
+            self.status += (str(investor.id)
+                            + "\t" + str(investor.asset)
+                            + "\t" + str(investor.share)
+                            + "\t" + str(investor.getDeposit())
+                            + "\t" + str(investor.getValorization())
+                            + "\t\t\t" + str(investor.getValorizationRate())
+                            + "\n")
+
+
 
         self.status += "\nTotal tariff assets:\t" + str(self.getAssets()) + "\n"
         self.status += "Total tariff shares:\t" + str(self.getShares()) + "(%)\n"

@@ -68,3 +68,14 @@ if __name__ == '__main__':
 
     # Print after evaluation
     print(tariff.getStatus())
+
+    # Withdrawal evaluation
+    evaluation.withdrawal_evaluate(9, 1000000, 15000000)
+
+    # Print after evaluation
+    print(tariff.getStatus())
+
+    evaluation.withdrawal_evaluate(9, 404562, 14000000)
+
+    # Print after evaluation
+    print(tariff.getStatus())
