@@ -22,7 +22,7 @@ class Evaluation:
 
         # Evaluation
         for investor in self.tariff_investors:
-            investor.setAsset(round(value_for_evaluation / investor.getShare()))
+            investor.setAsset(round(value_for_evaluation * (investor.getShare()/100)))
 
     def deposit_evaluate(self, investor_id, investor_deposit, value_for_evaluation):
 
@@ -41,7 +41,7 @@ class Evaluation:
 
         # Evaluation
         for investor in self.tariff_investors:
-            investor.setAsset(round(value_for_evaluation / investor.getShare()))
+            investor.setAsset(round(value_for_evaluation * (investor.getShare()/100)))
 
         # Deposit
         for investor in self.tariff_investors:

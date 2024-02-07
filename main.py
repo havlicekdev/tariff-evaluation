@@ -43,5 +43,15 @@ if __name__ == '__main__':
     # Print after evaluation
     print(tariff.getStatus())
 
+    # Tariff evaluation
+    evaluation = Evaluation(tariff)
+    evaluation.evaluate(15000000)
+
+    # Print after evaluation
+    print(tariff.getStatus())
+
+    # Deposit evaluation
+    evaluation.deposit_evaluate(5, 1000000, 16000000)
+
     # Print after evaluation
     print(tariff.getStatus())
