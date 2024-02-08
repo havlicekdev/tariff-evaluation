@@ -27,10 +27,10 @@ __init__(self)
 
 Methods:
 ```
-addInvestor(self, investor) # Přidat nového investora do tarifu.
+addInvestor(self, investor)         # Add a new investor into the tariff.
 ```
 ```
-removeInvestor(self, investor_id) # Odebrat existujícího investora z tarifu.
+removeInvestor(self, investor_id)   # Remove the existing investor from the tariff.
 ```
 
 
@@ -65,3 +65,6 @@ getValorizationRate(self)   # Get investor valorization(%)
 ```
 
 ## class Evaluation
+
+## Sample file
+sample.py
