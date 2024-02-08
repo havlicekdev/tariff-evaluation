@@ -10,16 +10,16 @@ if __name__ == '__main__':
     tariff = Tariff()
 
     # Add investor into tariff
-    tariff.addInvestor(Investor(1, 1000000, 10.0))
-    tariff.addInvestor(Investor(2, 1000000, 10.0))
-    tariff.addInvestor(Investor(3, 1000000, 10.0))
-    tariff.addInvestor(Investor(4, 1000000, 10.0))
-    tariff.addInvestor(Investor(5, 1000000, 10.0))
-    tariff.addInvestor(Investor(6, 1000000, 10.0))
-    tariff.addInvestor(Investor(7, 1000000, 10.0))
-    tariff.addInvestor(Investor(8, 1000000, 10.0))
-    tariff.addInvestor(Investor(9, 1000000, 10.0))
-    tariff.addInvestor(Investor(10, 1000000, 10.0))
+    tariff.addInvestor(Investor(1, 1000000))
+    tariff.addInvestor(Investor(2, 1000000))
+    tariff.addInvestor(Investor(3, 1000000))
+    tariff.addInvestor(Investor(4, 1000000))
+    tariff.addInvestor(Investor(5, 1000000))
+    tariff.addInvestor(Investor(6, 1000000))
+    tariff.addInvestor(Investor(7, 1000000))
+    tariff.addInvestor(Investor(8, 1000000))
+    tariff.addInvestor(Investor(9, 1000000))
+    tariff.addInvestor(Investor(10, 1000000))
 
     # Print after initial setup
     print(tariff.getStatus())
@@ -48,7 +48,7 @@ if __name__ == '__main__':
     print("------------------------------------------------")
     print("STEP4: Tariff valuation on D-day and investor´s new withdrawal.")
     print("New total tariffs assets value: 13 000 000.")
-    print("Investor ID: 2. Investor´s new withdrawal: 200 000.")
+    print("Investor ID: 5. Investor´s new withdrawal: 200 000.")
 
     # Deposit evaluation
     evaluation.withdrawal_evaluate(5, 200000, 13000000)
@@ -130,3 +130,21 @@ if __name__ == '__main__':
     # Print after evaluation
     print(tariff.getStatus())
 
+
+    print("------------------------------------------------")
+    print("STEP12: Add investor into the tariff.")
+
+    # Add new investor into the tariff
+    tariff.addInvestor(Investor(11, 500000))
+
+    # Print after evaluation
+    print(tariff.getStatus())
+
+    print("------------------------------------------------")
+    print("STEP13: Remove investor from the Tariff")
+
+    # Remove investor id:2 from the tariff
+    tariff.removeInvestor(2)
+
+    # Print after evaluation
+    print(tariff.getStatus())

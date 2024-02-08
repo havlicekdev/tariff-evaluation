@@ -1,13 +1,13 @@
 class Investor:
 
-    def __init__(self, investor_id, investor_deposit, investor_share):
-        self.deposit = investor_deposit
+    def __init__(self, investor_id, investor_deposit):
         self.id = investor_id
+        self.deposit = investor_deposit
         self.asset = investor_deposit
-        self.share = investor_share
+        self.share = float
 
-    def setId(self, id):
-        self.id = id
+    def setId(self, investor_id):
+        self.id = investor_id
 
     def getId(self):
         return self.id
