@@ -22,7 +22,7 @@ class Evaluation:
 
         # Evaluation
         for investor in self.tariff_investors:
-            investor.setAsset(round(value_for_evaluation * (investor.getShare()/100)))
+            investor.setAsset(round(value_for_evaluation * (investor.getShare() / 100)))
 
     def deposit_evaluate(self, investor_id, investor_deposit, value_for_evaluation):
 
@@ -41,34 +41,20 @@ class Evaluation:
 
         # Evaluation
         for investor in self.tariff_investors:
-            investor.setAsset(round(value_for_evaluation * (investor.getShare()/100)))
+            investor.setAsset(round(value_for_evaluation * (investor.getShare() / 100)))
 
         # Deposit
         for investor in self.tariff_investors:
             if investor.getId() == self.investor_id:
+                # set asset
                 investor.setAsset(round(investor.getAsset() + investor_deposit))
+
+                # increment deposit
                 investor.incDeposit(investor_deposit)
 
-        # Percentage conversion for deposit investor
-        self.deposit_id_share = 0
-
+        # Percentage conversion for every investor
         for investor in self.tariff_investors:
-            if investor.getId() == self.investor_id:
-                print(investor.getAsset())
-                print(self.tariff.getAssets())
-                investor.setShare((investor.getAsset() / self.tariff.getAssets())*100)
-                self.deposit_id_share = investor.getShare()
-
-        print(self.deposit_id_share)
-
-        # Percentage conversion for another investors
-        for investor in self.tariff_investors:
-            if investor.getId() != self.investor_id:
-                investor.setShare((investor.getAsset() / self.tariff.getAssets())*100)
-
-
-
-
+            investor.setShare((investor.getAsset() / self.tariff.getAssets()) * 100)
 
     def withdrawal_evaluate(self, investor_id, investor_withdrawal, value_for_evaluation):
 
@@ -95,19 +81,6 @@ class Evaluation:
                 investor.setAsset(round(investor.getAsset() - investor_withdrawal))
                 investor.decDeposit(investor_withdrawal)
 
-        # Percentage conversion for deposit investor
-        self.deposit_id_share = 0
-
+        # Percentage conversion for every investor
         for investor in self.tariff_investors:
-            if investor.getId() == self.investor_id:
-                print(investor.getAsset())
-                print(self.tariff.getAssets())
-                investor.setShare((investor.getAsset() / self.tariff.getAssets()) * 100)
-                self.deposit_id_share = investor.getShare()
-
-        print(self.deposit_id_share)
-
-        # Percentage conversion for another investors
-        for investor in self.tariff_investors:
-            if investor.getId() != self.investor_id:
-                investor.setShare((investor.getAsset() / self.tariff.getAssets()) * 100)
+            investor.setShare((investor.getAsset() / self.tariff.getAssets()) * 100)

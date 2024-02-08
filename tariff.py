@@ -10,6 +10,20 @@ class Tariff:
     def addInvestor(self, investor):
         self.investors.append(investor)
 
+    def removeInvestor(self, investor_id):
+
+        # remove investor from the tariff
+        for investor in self.investors:
+            if investor.getId() == investor_id:
+                self.investors.remove(investor)
+                break
+
+        # recalculate share of every investor in the tariff
+        for investor in self.investors:
+            investor.setShare((investor.getAsset() / self.getAssets())*100)
+
+
+
     def getListOfInvestors(self):
         return self.investors
 
@@ -40,11 +54,11 @@ class Tariff:
         return len(self.investors)
 
     def getStatus(self):
-        self.status = ("\n\nTariff status"
+        self.status = ("\nTariff status"
                        "\n\nId"
                        "\tAsset"
                        "\tShare(%)"
-                       "\t\t\tDeposit"
+                       "\t\tDeposit"
                        "\tValorization"
                        "\tValorization(%)"
                        "\n"
