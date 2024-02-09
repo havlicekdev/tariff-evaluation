@@ -2,6 +2,7 @@ class Tariff:
 
     # init
     def __init__(self):
+        self.sum_of_valorizations = None
         self.assets = None
         self.shares = None
         self.check = None
@@ -55,12 +56,12 @@ class Tariff:
         return len(self.investors)
 
     def getTariffValorization(self):
-        self.tariff_valorization = 0
-        self.sum_of_valorizations = 0
+        self.tariff_valorization = 0.0
+        self.sum_of_valorizations = 0.0
         for investor in self.investors:
-            self.sum_of_valorizations += investor.getShare()
+            self.sum_of_valorizations += investor.getValorizationRate()
 
-        self.tariff_valorization = (self.sum_of_valorizations / self.getLength())
+        self.tariff_valorization = round((self.sum_of_valorizations / self.getLength())*100)/100.00
         return self.tariff_valorization
 
 
