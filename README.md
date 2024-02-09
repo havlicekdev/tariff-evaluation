@@ -1,22 +1,62 @@
-# PPA Tariff Evaluation
-Zpracovává vyhodnocení tarifů, dle historických dat
+# Tariff Evaluation
 
-## Startovní data
-Nejdříve je nutné založit tarif a vložit do něj libovolný počet investorů. Investory je možné přidávat nebo odebrat kdykoliv později.
+This tool allows you to:
+- Create a new tariff with the possibility of an unlimited number of investors.
+- Add or remove individual investors at any time.
+- Evaluate the asset value of the tariff on any date.
+- Evaluate the value of the tariff assets at any date and allow any investor to make a new deposit.
+- Evaluate the value of the tariff assets at any date and allow any investor to withdraw the deposit.
+
+This tool provides the following information:
+- The value of the tariff assets at any time
+- Valorization of tariff assets at any moment
+- The value of an individual investor's assets at any given time
+- Valorization of the individual investor's assets at every moment
+- Ability to track each investment of each individual investor separately.
+
+## How it works
+First, you need to create a new tariff, then the tariff must be filled by at least one investor.
+Investors can be added or removed at any time later.
+
+On day D, the current value of the tariff assets is added using the method:
+```
+evaluate(self, value_for_evaluation)    # Evaluate the tariff
+```
+This recalculates the values of individual investors' assets, their asset valorization, or their share in the tariff.
 
 
-Pojmy:
-- Tariff: investiční portfolio
-- Investor: individuální investor investuící deposit do aktiv tarifu
-- Asset: aktiva investora nebo fondu alokována v investicích
-- Share (%): procentní podíl investora na aktivech tarifu
-- Deposit: finanční vklady investora vložené do tarifu
-- Valorization: zhodnocení depositu investora v příslušné měně
-- Valorization (%): zhodnocení depositu investora v %
+Method:
+```
+deposit_evaluate(self, investor_id, investor_deposit, value_for_evaluation) # Evaluate the tariff and new deposit
+```
+allows an individual investor to make a new deposit at any time.
 
-- Total tariff assets: celková aktiva tarifu v příslušné měně
-- Total tariff shares: součet jednotlivých procentuálních podílů investorů v tarifu
-- 100% shares devided: kontrola, zda součet jednotlivých procentuálních podílů investorů v tarifu je v součtu vždy 100%
+
+Method:
+```
+withdrawal_evaluate(self, investor_id, investor_withdrawal, value_for_evaluation)   # Evaluate the tarif and new withdrawal
+```
+allows to withdraw the deposit of an individual investor at any time.
+
+
+Every deposit or withdrawal has an impact on asset appreciation.
+To avoid this fact, a new deposit or withdrawal should be given as a new investment.
+
+By recording individual iterations, we get the evolution of investments over time.
+
+
+### Used terms:
+- Tariff: investment portfolio
+- Investor: an individual investor investing a deposit in tariff assets
+- Asset: the investor's or fund's assets allocated in investments
+- Share (%): the investor's percentage of the tariff's assets
+- Deposit: financial deposits of the investor placed in the tariff
+- Valorization: valuation of the investor's deposit in the relevant currency
+- Valorization (%): valuation of the investor's deposit in percent
+
+- Total tariff assets: the total assets of the tariff in the relevant currency
+- Total tariff shares: the sum of individual percentage shares of investors in the tariff
+- Total tariff valorization (%): valuation of the tariff´s deposits in percent
 
 ## class Tariff
 
@@ -66,5 +106,22 @@ getValorizationRate(self)   # Get investor valorization(%)
 
 ## class Evaluation
 
+Constructor
+```
+__init__(self, tariff)
+```
+
+Methods:
+```
+evaluate(self, value_for_evaluation)                                                # Evaluate the tariff
+```
+```
+deposit_evaluate(self, investor_id, investor_deposit, value_for_evaluation)         # Evaluate the tariff and new deposit
+```
+```
+withdrawal_evaluate(self, investor_id, investor_withdrawal, value_for_evaluation)   # Evaluate the tarif and new withdrawal
+```
+
+
 ## Sample file
-sample.py
+The sample.py file shows examples how to use the methods.
